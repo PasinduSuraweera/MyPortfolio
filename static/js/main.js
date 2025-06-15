@@ -23,12 +23,20 @@ document.querySelectorAll('.nav-link').forEach(anchor => {
 // Handle URL Hash on Page Load
 window.addEventListener('load', () => {
     console.log('Page loaded, checking hash:', window.location.hash);
-    if (window.location.hash) {
-        const targetId = window.location.hash.substring(1);
-        const target = document.getElementById(targetId);
-        if (target) {
+    let targetId = window.location.hash ? window.location.hash.substring(1) : 'home';
+    const target = document.getElementById(targetId);
+    if (target) {
+        gsap.to(window, {
+            scrollTo: { y: target, offsetY: 80 },
+            duration: 0.8,
+            ease: 'power2.out'
+        });
+    } else {
+        // Default to #home if no valid hash
+        const homeTarget = document.getElementById('home');
+        if (homeTarget) {
             gsap.to(window, {
-                scrollTo: { y: target, offsetY: 80 },
+                scrollTo: { y: homeTarget, offsetY: 80 },
                 duration: 0.8,
                 ease: 'power2.out'
             });
@@ -203,20 +211,58 @@ function createParticles() {
 }
 window.addEventListener('load', createParticles);
 
-// Form Validation
+// Form Validation and AJAX Submission
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevent default form submission
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const message = document.getElementById('message').value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Client-side validation
         if (!name || !email || !message) {
-            e.preventDefault();
             alert('Please fill out all fields.');
+            return;
         } else if (!emailRegex.test(email)) {
-            e.preventDefault();
             alert('Please enter a valid email address.');
+            return;
         }
+
+        // Prepare form data
+        const formData = new FormData(contactForm);
+
+        // Submit form via AJAX
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                // Clear form fields
+                contactForm.reset();
+                // Show success message
+                alert('Message sent successfully!');
+                // Scroll to Home section
+                const homeTarget = document.getElementById('home');
+                if (homeTarget) {
+                    gsap.to(window, {
+                        scrollTo: { y: homeTarget, offsetY: 80 },
+                        duration: 0.8,
+                        ease: 'power2.out'
+                    });
+                }
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Form submission error:', error);
+            alert('Failed to send message. Please try again later.');
+        });
     });
 }
