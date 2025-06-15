@@ -71,3 +71,7 @@ footer { background-color: #1f2937; }
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
+
+input[name="_gotcha"] {
+    display: none;
+}
