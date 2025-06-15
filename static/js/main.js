@@ -133,7 +133,7 @@ const modalDemo = document.getElementById('modal-demo');
 const projectData = [
     {
         title: 'EmpManage',
-        image: './static/images/empmanage.png',
+        image: './static/images/empmanage22.png',
         alt: 'EmpManage System',
         description: 'A scalable Employee Management System to streamline HR operations, featuring employee tracking, announcements, role-based access control, and real-time analytics. Built to enhance productivity and communication across organizations.',
         tech: ['Java', 'JSP', 'JavaScript', 'MySQL', 'Apache Tomcat'],
