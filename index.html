@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio of Pasindu, a passionate web developer creating intuitive and visually stunning applications.">
-    <meta name="keywords" content="web developer, portfolio, Java, JavaScript, MySQL, Tailwind CSS">
+    <meta name="keywords" content="web developer, portfolio, Java, JavaScript, MySQL, Tailwind CSS, React, MongoDB">
     <title>Pasindu Suraweera</title>
     <link rel="stylesheet" href="./static/css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -93,6 +93,9 @@
                         <span class="px-4 py-2 bg-blue-600/30 text-blue-300 text-sm font-medium rounded-full hover:bg-blue-600/50 transition duration-300">Java</span>
                         <span class="px-4 py-2 bg-blue-600/30 text-blue-300 text-sm font-medium rounded-full hover:bg-blue-600/50 transition duration-300">Python</span>
                         <span class="px-4 py-2 bg-blue-600/30 text-blue-300 text-sm font-medium rounded-full hover:bg-blue-600/50 transition duration-300">C/C++</span>
+                        <span class="px-4 py-2 bg-blue-600/30 text-blue-300 text-sm font-medium rounded-full hover:bg-blue-600/50 transition duration-300">JavaScript</span>
+                        <span class="px-4 py-2 bg-blue-600/30 text-blue-300 text-sm font-medium rounded-full hover:bg-blue-600/50 transition duration-300">React</span>
+                        <span class="px-4 py-2 bg-blue-600/30 text-blue-300 text-sm font-medium rounded-full hover:bg-blue-600/50 transition duration-300">MERN Stack</span>
                     </div>
                     <!-- Resume Button -->
                     <div class="flex justify-center">
@@ -113,11 +116,22 @@
                 <button class="project-filter px-4 py-2 bg-gray-700 text-gray-300 rounded-full hover:bg-blue-500 hover:text-white transition duration-300" data-filter="java" aria-selected="false">Java</button>
                 <button class="project-filter px-4 py-2 bg-gray-700 text-gray-300 rounded-full hover:bg-blue-500 hover:text-white transition duration-300" data-filter="javascript" aria-selected="false">JavaScript</button>
                 <button class="project-filter px-4 py-2 bg-gray-700 text-gray-300 rounded-full hover:bg-blue-500 hover:text-white transition duration-300" data-filter="mysql" aria-selected="false">MySQL</button>
+                <button class="project-filter px-4 py-2 bg-gray-700 text-gray-300 rounded-full hover:bg-blue-500 hover:text-white transition duration-300" data-filter="react" aria-selected="false">React</button>
+                <button class="project-filter px-4 py-2 bg-gray-700 text-gray-300 rounded-full hover:bg-blue-500 hover:text-white transition duration-300" data-filter="mern" aria-selected="false">MERN Stack</button>
             </div>
             <!-- Project Grid -->
             <div class="project-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+                <div class="project-card relative overflow-hidden rounded-xl shadow-xl cursor-pointer" data-tags="javascript,react,mern">
+                    <img src="./static/images/Split home.png" alt="Split Bill Splitting App" class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <div class="text-center text-white p-4">
+                            <h3 class="text-xl font-semibold">Split</h3>
+                            <p class="text-sm">React, Node.js, MongoDB, Chart.js</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="project-card relative overflow-hidden rounded-xl shadow-xl cursor-pointer" data-tags="java,javascript,mysql">
-                    <img src="./static/images/empmanage.png" alt="EmpManage System" class="w-full h-64 object-cover">
+                    <img src="./static/images/empmanage2.png" alt="EmpManage System" class="w-full h-64 object-cover">
                     <div class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition duration-300 flex items-center justify-center">
                         <div class="text-center text-white p-4">
                             <h3 class="text-xl font-semibold">EmpManage</h3>

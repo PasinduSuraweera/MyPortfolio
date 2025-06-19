@@ -132,6 +132,15 @@ const modalDemo = document.getElementById('modal-demo');
 // Project Data
 const projectData = [
     {
+        title: 'Sp/it - intelligent Bill Splitter',
+        image: './static/images/Split dash.png',
+        alt: 'Split Bill Splitting App Dashboard',
+        description: 'A smart bill-splitting app designed to simplify group expense management. Features include friend management, real-time bill splitting, currency conversion, and interactive spending analytics powered by Chart.js.',
+        tech: ['React', 'Node.js', 'MongoDB', 'Chart.js', 'Tailwind CSS', 'Axios'],
+        github: 'https://github.com/PasinduSuraweera/Split',
+        demo: 'https://example.com' 
+    },
+    {
         title: 'EmpManage',
         image: './static/images/empmanage22.png',
         alt: 'EmpManage System',
@@ -144,22 +153,33 @@ const projectData = [
 
 projectCards.forEach((card, index) => {
     card.addEventListener('click', () => {
-        const data = projectData[index];
-        modalTitle.textContent = data.title;
-        modalImage.src = data.image;
-        modalImage.alt = data.alt;
-        modalDescription.textContent = data.description;
-        modalTech.innerHTML = data.tech.map(tech => `<li>${tech}</li>`).join('');
-        modalGithub.href = data.github;
-        modalDemo.href = data.demo;
-        projectModal.classList.remove('hidden');
-        projectModal.setAttribute('aria-hidden', 'false');
+        if (!projectModal || !modalTitle || !modalImage || !modalDescription || !modalTech || !modalGithub || !modalDemo) {
+            console.error('Modal elements not found');
+            return;
+        }
+        if (projectData[index]) {
+            const data = projectData[index];
+            modalTitle.textContent = data.title || 'Untitled Project';
+            modalImage.src = data.image || '';
+            modalImage.alt = data.alt || 'Project Image';
+            modalDescription.textContent = data.description || 'No description available.';
+            modalTech.innerHTML = Array.isArray(data.tech) ? data.tech.map(tech => `<li>${tech}</li>`).join('') : '';
+            modalGithub.href = data.github || '#';
+            modalDemo.href = data.demo || '#';
+            modalDemo.style.display = data.demo === '#' ? 'none' : 'inline';
+            projectModal.classList.remove('hidden');
+            projectModal.setAttribute('aria-hidden', 'false');
+        } else {
+            console.error('No project data found for index:', index);
+        }
     });
 });
 
 closeModal.addEventListener('click', () => {
-    projectModal.classList.add('hidden');
-    projectModal.setAttribute('aria-hidden', 'true');
+    if (projectModal) {
+        projectModal.classList.add('hidden');
+        projectModal.setAttribute('aria-hidden', 'true');
+    }
 });
 
 projectModal.addEventListener('click', (e) => {
@@ -179,35 +199,40 @@ mobileMenuButton.addEventListener('click', () => {
 // Particle Effect
 function createParticles() {
     const canvas = document.createElement('canvas');
-    document.getElementById('particles').appendChild(canvas);
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const ctx = canvas.getContext('2d');
-    const particles = [];
-    for (let i = 0; i < 50; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            radius: Math.random() * 2 + 1,
-            vx: Math.random() * 2 - 1,
-            vy: Math.random() * 2 - 1
-        });
+    const particlesContainer = document.getElementById('particles');
+    if (particlesContainer) {
+        particlesContainer.appendChild(canvas);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext('2d');
+        const particles = [];
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2 + 1,
+                vx: Math.random() * 2 - 1,
+                vy: Math.random() * 2 - 1
+            });
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    } else {
+        console.error('Particles container not found');
     }
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.fill();
-        });
-        requestAnimationFrame(animate);
-    }
-    animate();
 }
 window.addEventListener('load', createParticles);
 
