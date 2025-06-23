@@ -148,6 +148,15 @@ const projectData = [
         tech: ['Java', 'JSP', 'JavaScript', 'MySQL', 'Apache Tomcat'],
         github: 'https://github.com/PasinduSuraweera/EmpManage',
         demo: 'https://example.com'
+    },
+    {
+        title: 'TakeNotes <>',
+        image: './static/images/takenotes2.png',
+        alt: 'Takenotes App',
+        description: 'A scalable Note Keeping application made to showcase MERN Stack use.',
+        tech: ['React', 'Node.js', 'MongoDB', 'Chart.js', 'Tailwind CSS', 'Axios'],
+        github: 'https://github.com/PasinduSuraweera/TakeNotes',
+        demo: 'https://example.com'
     }
 ];
 
