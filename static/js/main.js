@@ -132,13 +132,13 @@ const modalDemo = document.getElementById('modal-demo');
 // Project Data
 const projectData = [
     {
-        title: 'Sp/it - intelligent Bill Splitter',
-        image: './static/images/Split dash.png',
-        alt: 'Split Bill Splitting App Dashboard',
-        description: 'A smart bill-splitting app designed to simplify group expense management. Features include friend management, real-time bill splitting, currency conversion, and interactive spending analytics powered by Chart.js.',
-        tech: ['React', 'Node.js', 'MongoDB', 'Chart.js', 'Tailwind CSS', 'Axios'],
-        github: 'https://github.com/PasinduSuraweera/Split',
-        demo: 'https://example.com' 
+        title: 'EchoChat - RealTime Video/Chat App',
+        image: './static/images/echo chat.png',
+        alt: 'Takenotes App',
+        description: 'An online realtime chat/video application made using MERN Stack and Stream.',
+        tech: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Axios',],
+        github: 'https://github.com/PasinduSuraweera/EchoChat',
+        demo: 'https://example.com'
     },
     {
         title: 'EmpManage',
@@ -148,6 +148,15 @@ const projectData = [
         tech: ['Java', 'JSP', 'JavaScript', 'MySQL', 'Apache Tomcat'],
         github: 'https://github.com/PasinduSuraweera/EmpManage',
         demo: 'https://example.com'
+    },
+    {
+        title: 'Sp/it - intelligent Bill Splitter',
+        image: './static/images/Split dash.png',
+        alt: 'Split Bill Splitting App Dashboard',
+        description: 'A smart bill-splitting app designed to simplify group expense management. Features include friend management, real-time bill splitting, currency conversion, and interactive spending analytics powered by Chart.js.',
+        tech: ['React', 'Node.js', 'MongoDB', 'Chart.js', 'Tailwind CSS', 'Axios'],
+        github: 'https://github.com/PasinduSuraweera/Split',
+        demo: 'https://example.com' 
     },
     {
         title: 'TakeNotes <>',
